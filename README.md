@@ -3,7 +3,7 @@
 ## Description
 
 This is a sample of AWS CodeBuild Docker project using Docker Compose.
-This sample will produce Docker images and push to AWS ECR.
+This sample will produce Docker images and push it to AWS ECR.
 
 ## Requirement
 
@@ -17,8 +17,8 @@ This sample will produce Docker images and push to AWS ECR.
 
 ## Usage
 
-1. Create repositories in AWS ECR.
-1. Create AWS CLI input json file for CodeBuild project.
+1. Create Docker repositories in AWS ECR.
+1. Create AWS CodeBuild project.
     ```
     $ git clone https://github.com/nomnux/aws-codebuild-docker-compose-sample
     $ cd aws-codebuild-docker-compose-sample/codebuild-project
