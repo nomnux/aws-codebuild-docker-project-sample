@@ -1,5 +1,5 @@
 {
-  "name": "sample-docker-project",
+  "name": "sample-docker-compose-project",
   "source": {
     "type": "GITHUB",
     "location": "https://github.com/{{YOUR_USERNAME}}/{{YOUR_REPOSITORY}}.git"
