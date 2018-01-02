@@ -10,6 +10,7 @@ This sample will produce Docker image and push it to AWS ECR.
 * AWS CodeBuild
 * AWS ECR
 * AWS CLI
+* AWS IAM Role for CodeBuild project
 * GitHub repository
 * Docker
 * Docker Compose
