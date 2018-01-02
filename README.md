@@ -26,7 +26,7 @@ This sample will produce Docker image and push it to AWS ECR.
     $ vim buildproject.json
     $ ./codebuild-create-project.sh ./buildproject.json
     ```
-1. Run AWS CodeBuild. Please see http://docs.aws.amazon.com/codebuild/latest/userguide/how-to-run.html.
+1. Start build.
     ```
     $ cd aws-codebuild-docker-compose-sample/codebuild-project
     $ cp -a start-build.json.sample start-build.json
