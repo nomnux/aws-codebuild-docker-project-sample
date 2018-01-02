@@ -17,7 +17,7 @@ This sample will produce Docker image and push it to AWS ECR.
 
 ## Usage
 
-1. Create a repositoy in AWS ECR.
+1. Create repositories in AWS ECR.
 1. Create AWS CLI input json file for CodeBuild project.
     ```
     $ git clone https://github.com/nomnux/aws-codebuild-docker-compose-sample
