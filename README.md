@@ -11,7 +11,6 @@ This sample will produce Docker images and push it to AWS ECR.
 * AWS ECR
 * AWS CLI
 * AWS IAM Role for CodeBuild project
-* GitHub repository
 * Docker
 * Docker Compose
 
