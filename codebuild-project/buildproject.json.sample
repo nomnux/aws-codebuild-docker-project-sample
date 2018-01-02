@@ -21,8 +21,12 @@
         "value": "{{YOUR_AWS_ACCOUNT_ID}}"
       },
       {
-        "name": "IMAGE_REPO_NAME",
-        "value": "{{YOUR_ECR_REPOSITORY_NAME}}"
+        "name": "IMAGE_REPO_NAME_WEBAPP",
+        "value": "{{YOUR_ECR_REPOSITORY_NAME_FOR_WEBAPP_IMAGE}}"
+      },
+      {
+        "name": "IMAGE_REPO_NAME_NGINX",
+        "value": "{{YOUR_ECR_REPOSITORY_NAME_FOR_NGINX_IMAGE}}"
       },
       {
         "name": "IMAGE_TAG",
