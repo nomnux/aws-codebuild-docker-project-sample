@@ -18,4 +18,3 @@ phases:
       - docker-compose push
       - echo Sending notification...
       - aws sns publish --topic-arn "$SNS_TOPIC_ARN" --subject "AWS CodeBuild - $CODEBUILD_BUILD_ID" --message "Build Completed"
-      #- aws sns publish --topic-arn "$SNS_TOPIC_ARN" --subject "AWS CodeBuild - Build Completed" --message "https://console.aws.amazon.com/cloudwatch/home?region=${AWS_DEFAULT_REGION}#logStream:group=/aws/codebuild/${BUILD_PROJECT_NAME}"
