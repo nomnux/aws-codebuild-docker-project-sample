@@ -17,6 +17,7 @@ phases:
       - echo Pushing the Docker image...
       - docker-compose push
       - echo Sending notification...
-      - aws sns publish --topic-arn "$SNS_TOPIC_ARN" --subject "AWS CodeBuild - Build Completed" --message "Build Completed"
+      - aws sns publish --topic-arn "$SNS_TOPIC_ARN" --subject "AWS CodeBuild - Build Completed - $BUILD_PROJECT_NAME" --message "Build Completed"
+      #- aws sns publish --topic-arn "$SNS_TOPIC_ARN" --subject "AWS CodeBuild - Build Completed" --message "Build Completed"
       #- aws sns publish --topic-arn "$SNS_TOPIC_ARN" --subject "AWS CodeBuild - Build Completed" --message "https://console.aws.amazon.com/cloudwatch/home?region=${AWS_DEFAULT_REGION}#logStream:group=/aws/codebuild/${BUILD_PROJECT_NAME}"
       #- aws sns publish --topic-arn "$SNS_TOPIC_ARN" --subject "AWS CodeBuild - Build Completed - Status: $CODEBUILD_BUILD_SUCCEEDING" --message "https://console.aws.amazon.com/cloudwatch/home?region=$AWS_DEFAULT_REGION#logStream:group=/aws/codebuild/$BUILD_PROJECT_NAME"
