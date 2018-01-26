@@ -8,6 +8,8 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION  --no-include-email)
+      - echo Pulling Docker Images for cache
+      - docker-compose pull
   build:
     commands:
       - echo Building the Docker image...
