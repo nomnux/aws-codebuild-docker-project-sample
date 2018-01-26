@@ -2,7 +2,7 @@
 
 ## Build Status
 
-![Build Status] https://codebuild.ap-northeast-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiVGFkWUlaQTgvcER4dVdrU3Q1UWU2SWE4YXUvNTFoOEFyblVEeDE2TkltQVpvalhDdlMvbEs5NHF6TUk2NVNYSVYvVFp5OWdONWtTbWJVdFV6SW1EOUVzPSIsIml2UGFyYW1ldGVyU3BlYyI6InNXbGRJQWhuQXFLOCtBeTQiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master
+![Build Status](https://codebuild.ap-northeast-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiVGFkWUlaQTgvcER4dVdrU3Q1UWU2SWE4YXUvNTFoOEFyblVEeDE2TkltQVpvalhDdlMvbEs5NHF6TUk2NVNYSVYvVFp5OWdONWtTbWJVdFV6SW1EOUVzPSIsIml2UGFyYW1ldGVyU3BlYyI6InNXbGRJQWhuQXFLOCtBeTQiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
 
 ## Description
 
