@@ -11,11 +11,11 @@ phases:
   build:
     commands:
       - echo Building the Docker image...
-      - aws sns publish --topic-arn "${SNS_TOPIC_ARN}" --subject "AWS CodeBuild - ${CODEBUILD_BUILD_ID}" --message "Build Started. Initiator:${CODEBUILD_INITIATOR}, Image:${IMAGE_REPO_PREFIX}"
+      - aws sns publish --topic-arn "${SNS_TOPIC_ARN}" --subject "AWS CodeBuild Started - ${CODEBUILD_BUILD_ID}" --message "Build Started. Initiator:${CODEBUILD_INITIATOR}, Image:${IMAGE_REPO_PREFIX}"
       - docker-compose build
   post_build:
     commands:
       - echo Pushing the Docker image...
       - docker-compose push
       - echo Sending notification...
-      - aws sns publish --topic-arn "${SNS_TOPIC_ARN}" --subject "AWS CodeBuild - ${CODEBUILD_BUILD_ID}" --message "Build Completed. Initiator:${CODEBUILD_INITIATOR}, Image:${IMAGE_REPO_PREFIX}"
+      - aws sns publish --topic-arn "${SNS_TOPIC_ARN}" --subject "AWS CodeBuild Completed - ${CODEBUILD_BUILD_ID}" --message "Build Completed. Initiator:${CODEBUILD_INITIATOR}, Image:${IMAGE_REPO_PREFIX}"
