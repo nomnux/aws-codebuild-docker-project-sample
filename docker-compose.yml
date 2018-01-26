@@ -1,12 +1,12 @@
-version: '3.0'
+version: '3.5'
 
 services:
   webapp:
     build:
       context: ./webapp
-    image: ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME_WEBAPP}:${IMAGE_TAG}
+    image: ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_PREFIX}/webapp:${IMAGE_TAG}
 
   nginx:
     build:
       context: ./nginx
-    image: ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME_NGINX}:${IMAGE_TAG}
+    image: ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_PREFIX}/nginx:${IMAGE_TAG}
