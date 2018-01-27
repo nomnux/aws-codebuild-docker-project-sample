@@ -4,9 +4,13 @@ services:
   webapp:
     build:
       context: ./webapp
+      cache_from:
+        - ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_PREFIX}/webapp:${IMAGE_TAG}
     image: ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_PREFIX}/webapp:${IMAGE_TAG}
 
   nginx:
     build:
       context: ./nginx
+      cache_from:
+        - ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_PREFIX}/nginx:${IMAGE_TAG}
     image: ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_PREFIX}/nginx:${IMAGE_TAG}
