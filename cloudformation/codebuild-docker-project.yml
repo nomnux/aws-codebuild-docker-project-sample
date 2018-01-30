@@ -6,7 +6,7 @@ Parameters:
   GitHubRepo:
     Type: String
     Default: https://github.com/{USERNAME}/{REPOSITORY_NAME}.git
-  SnsTopicNameForCodebuildProject:
+  SnsTopicArnForCodebuildProject:
     Type: String
 
 Resources:
@@ -30,7 +30,7 @@ Resources:
         - Name: IMAGE_REPO_PREFIX
           Value: codebuild/test
         - Name: SNS_TOPIC_ARN
-          Value: !Ref SnsTopicNameForCodebuildProject
+          Value: !Ref SnsTopicArnForCodebuildProject
       ServiceRole: !GetAtt [ IamRoleForCodeBuild, Arn ]
 
   ## ----------------------------------------------------------------------------
