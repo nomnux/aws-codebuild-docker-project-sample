@@ -6,6 +6,8 @@ phases:
       - curl -L "https://github.com/docker/compose/releases/download/1.18.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose
   pre_build:
     commands:
+      - echo Sending notification...
+      - aws sns publish --topic-arn "${SNS_TOPIC_ARN}" --subject "AWS CodeBuild Started - ${CODEBUILD_BUILD_ID}" --message "Build Started. Initiator:${CODEBUILD_INITIATOR}, Image:${IMAGE_REPO_PREFIX}"
       - echo Logging in to Amazon ECR...
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION  --no-include-email)
       - echo Pulling Docker Images for cache
@@ -13,7 +15,6 @@ phases:
   build:
     commands:
       - echo Building the Docker image...
-      - aws sns publish --topic-arn "${SNS_TOPIC_ARN}" --subject "AWS CodeBuild Started - ${CODEBUILD_BUILD_ID}" --message "Build Started. Initiator:${CODEBUILD_INITIATOR}, Image:${IMAGE_REPO_PREFIX}"
       - docker-compose build
   post_build:
     commands:
