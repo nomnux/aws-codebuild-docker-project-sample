@@ -50,7 +50,7 @@ Resources:
   IamRoleForCodeBuild:
     Type: AWS::IAM::Role
     Properties:
-      RoleName: !Join ["-", [!Ref "AWS::StackName", iam-role-codebuild]]
+      RoleName: !Sub ${AWS::StackName}-iam-role-codebuild
       AssumeRolePolicyDocument:
         Statement:
           - Effect: Allow
