@@ -11,7 +11,7 @@ This is a sample of AWS CodeBuild Docker project.
 
 ## Installation
 
-1. Create AWS CloudFormation Stack using [this CloudFormation template](./cloudformation/codebuild-project.yml). The following resources will be created by CloudFormation.
+1. Create AWS CloudFormation Stack using [CloudFormation template](./cloudformation/codebuild-project.yml). The following resources will be created by CloudFormation.
     * AWS CodeBuild project
     * AWS ECR repositories
     * AWS IAM roles
