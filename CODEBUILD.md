@@ -1,10 +1,9 @@
-# AWS CodeBuild Project and CodePipeline Sample
+# AWS CodeBuild Docker Project Sample
 
 
 ## Description
 
 This is a sample of AWS CodeBuild Docker project using Docker Compose.
-This sample will produce Docker images and push it to AWS ECR.
 
 ## Requirement
 
