@@ -1,12 +1,11 @@
 # AWS CodeBuild Docker Project Sample
 
-
 ## Description
 
-This is a sample of AWS CodeBuild Docker project using Docker Compose.
-This sample will produce Docker images and push it to AWS ECR.
+This is a sample of AWS CodeBuild Docker project.
+This sample will build Docker images and push it to AWS ECR.
 
-## Requirement
+## Requirements
 
 * AWS SNS Topic
 
