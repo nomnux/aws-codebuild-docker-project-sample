@@ -10,7 +10,6 @@ phases:
       - echo "Initiator:${CODEBUILD_INITIATOR}" > sns-message.txt
       - echo "GitHub CommitId:${CODEBUILD_RESOLVED_SOURCE_VERSION}" >> sns-message.txt
       - echo "BuildId:${CODEBUILD_BUILD_ID}" >>  sns-message.txt
-      - echo "CODEBUILD_SOURCE_REPO_URL:${CODEBUILD_SOURCE_REPO_URL}" >>  sns-message.txt
       - echo Sending notification...
       - aws sns publish --topic-arn "${SNS_TOPIC_ARN}" --subject "AWS CodeBuild Started - ${CODEBUILD_BUILD_ID}" --message file://sns-message.txt
       - echo Logging in to Amazon ECR...
