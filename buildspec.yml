@@ -30,5 +30,6 @@ phases:
       - printenv 2>&1 | tee -a log.txt
       - echo Sending build log ... 2>&1 | tee -a log.txt
       - aws sns publish --topic-arn "${SNS_TOPIC_ARN}" --subject "AWS CodeBuild Log - ${CODEBUILD_BUILD_ID}" --message fileb://log.txt
+      - echo "CODEBUILD_BUILD_SUCCEEDING:${CODEBUILD_BUILD_SUCCEEDING}" | tee -a sns-message.txt
       - echo Sending notification ...
       - aws sns publish --topic-arn "${SNS_TOPIC_ARN}" --subject "AWS CodeBuild Completed - ${CODEBUILD_BUILD_ID}" --message file://sns-message.txt
