@@ -14,21 +14,21 @@ phases:
       - echo "CODEBUILD_RESOLVED_SOURCE_VERSION:${CODEBUILD_RESOLVED_SOURCE_VERSION}" | tee -a sns-message.txt
       - echo Sending notification ...
       - aws sns publish --topic-arn "${SNS_TOPIC_ARN}" --subject "AWS CodeBuild Started - ${CODEBUILD_BUILD_ID}" --message file://sns-message.txt
-      - echo Logging in to Amazon ECR ... 2>&1 | tee -a log.txt
+      - echo Logging in to Amazon ECR ... | tee -a log.txt
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION  --no-include-email)
-      - echo Pulling Docker Images for cache ... 2>&1 | tee -a log.txt
+      - echo Pulling Docker Images for cache ... | tee -a log.txt
       - docker-compose pull --ignore-pull-failures --parallel 2>&1 | tee -a log.txt
   build:
     commands:
-      - echo Building the Docker image ... 2>&1 | tee -a log.txt
+      - echo Building the Docker image ... | tee -a log.txt
       - docker-compose build 2>&1 | tee -a log.txt
   post_build:
     commands:
-      - echo Pushing the Docker image ... 2>&1 | tee -a log.txt
-      - ./docker-compose push 2>&1 | tee -a log.txt
-      - echo printenv 2>&1 | tee -a log.txt
-      - printenv 2>&1 | tee -a log.txt
-      - echo Sending build log ... 2>&1 | tee -a log.txt
+      - echo Pushing the Docker image ... | tee -a log.txt
+      - docker-compose push 2>&1 | tee -a log.txt
+      - echo printenv | tee -a log.txt
+      - printenv | tee -a log.txt
+      - echo Sending build log ... | tee -a log.txt
       - aws sns publish --topic-arn "${SNS_TOPIC_ARN}" --subject "AWS CodeBuild Log - ${CODEBUILD_BUILD_ID}" --message fileb://log.txt
       - echo "CODEBUILD_BUILD_SUCCEEDING:${CODEBUILD_BUILD_SUCCEEDING}" | tee -a sns-message.txt
       - echo Sending notification ...
