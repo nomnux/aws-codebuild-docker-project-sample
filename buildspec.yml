@@ -6,18 +6,25 @@ phases:
       - curl -L "https://github.com/docker/compose/releases/download/1.18.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose
   pre_build:
     commands:
+      - echo Creating notification message file ...
+      - echo "Initiator:${CODEBUILD_INITIATOR}" > sns-message.txt
+      - echo "GitHub CommitId:${CODEBUILD_RESOLVED_SOURCE_VERSION}" >> sns-message.txt
+      - echo "BuildId:${CODEBUILD_BUILD_ID}" >>  sns-message.txt
+      - echo Sending notification...
+      - aws sns publish --topic-arn "${SNS_TOPIC_ARN}" --subject "AWS CodeBuild Started - ${CODEBUILD_BUILD_ID}" --message file://sns-message.txt
       - echo Logging in to Amazon ECR...
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION  --no-include-email)
-      - echo Pulling Docker Images for cache
-      - docker-compose pull --ignore-pull-failures --parallel
+      - echo Pulling Docker Images for cache ... 2>&1 | tee -a log.txt
+      - docker-compose pull --ignore-pull-failures --parallel 2>&1 | tee -a log.txt
   build:
     commands:
-      - echo Building the Docker image...
-      - aws sns publish --topic-arn "${SNS_TOPIC_ARN}" --subject "AWS CodeBuild Started - ${CODEBUILD_BUILD_ID}" --message "Build Started. Initiator:${CODEBUILD_INITIATOR}, Image:${IMAGE_REPO_PREFIX}"
-      - docker-compose build
+      - echo Building the Docker image... 2>&1 | tee -a log.txt
+      - ./docker-compose build 2>&1 | tee -a log.txt
   post_build:
     commands:
-      - echo Pushing the Docker image...
-      - docker-compose push
+      - echo Pushing the Docker image ... 2>&1 | tee -a log.txt
+      - ./docker-compose push 2>&1 | tee -a log.txt
+      - echo Sending build log ... 2>&1 | tee -a log.txt
+      - aws sns publish --topic-arn "${SNS_TOPIC_ARN}" --subject "AWS CodeBuild Log - ${CODEBUILD_BUILD_ID}" --message fileb://log.txt
       - echo Sending notification...
-      - aws sns publish --topic-arn "${SNS_TOPIC_ARN}" --subject "AWS CodeBuild Completed - ${CODEBUILD_BUILD_ID}" --message "Build Completed. Initiator:${CODEBUILD_INITIATOR}, Image:${IMAGE_REPO_PREFIX}"
+      - aws sns publish --topic-arn "${SNS_TOPIC_ARN}" --subject "AWS CodeBuild Completed - ${CODEBUILD_BUILD_ID}" --message file://sns-message.txt
