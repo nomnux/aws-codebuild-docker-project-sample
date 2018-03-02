@@ -7,8 +7,8 @@ phases:
   pre_build:
     commands:
       - echo Creating notification message file ...
-      - echo "Initiator:${CODEBUILD_INITIATOR}" | tee -a sns-message.txt
-      - echo "BuildId:${CODEBUILD_BUILD_ID}" | tee -a sns-message.txt
+      - echo "CODEBUILD_INITIATOR:${CODEBUILD_INITIATOR}" | tee -a sns-message.txt
+      - echo "CODEBUILD_BUILD_ID:${CODEBUILD_BUILD_ID}" | tee -a sns-message.txt
       - echo "CODEBUILD_SOURCE_REPO_URL:${CODEBUILD_SOURCE_REPO_URL}" | tee -a sns-message.txt
       - echo "CODEBUILD_SOURCE_VERSION:${CODEBUILD_SOURCE_VERSION}" | tee -a sns-message.txt
       - echo "CODEBUILD_RESOLVED_SOURCE_VERSION:${CODEBUILD_RESOLVED_SOURCE_VERSION}" | tee -a sns-message.txt
