@@ -8,8 +8,10 @@ phases:
     commands:
       - echo Creating notification message file ...
       - echo "Initiator:${CODEBUILD_INITIATOR}" | tee -a sns-message.txt
-      - echo "GitHub CommitId:${CODEBUILD_RESOLVED_SOURCE_VERSION}" | tee -a sns-message.txt
       - echo "BuildId:${CODEBUILD_BUILD_ID}" | tee -a sns-message.txt
+      - echo "CODEBUILD_SOURCE_REPO_URL:${CODEBUILD_SOURCE_REPO_URL}" | tee -a sns-message.txt
+      - echo "CODEBUILD_SOURCE_VERSION:${CODEBUILD_SOURCE_VERSION}" | tee -a sns-message.txt
+      - echo "CODEBUILD_RESOLVED_SOURCE_VERSION:${CODEBUILD_RESOLVED_SOURCE_VERSION}" | tee -a sns-message.txt
       - echo Sending notification ...
       - aws sns publish --topic-arn "${SNS_TOPIC_ARN}" --subject "AWS CodeBuild Started - ${CODEBUILD_BUILD_ID}" --message file://sns-message.txt
       - echo Logging in to Amazon ECR ... 2>&1 | tee -a log.txt
